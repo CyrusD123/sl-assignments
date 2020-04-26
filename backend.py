@@ -3,10 +3,10 @@ import json
 import os
 import psycopg2
 
+print("gamer time")
 # Error is somewhere here
 DATABASE_URL = os.environ['DATABASE_URL']# <
-print("gamer time")
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')# <
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 cursor = conn.cursor()
 
