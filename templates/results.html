@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<title>Results</title>
+<head>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+<h1>Results:</h1>
+{% if result %}
+    <table border=0 align="center">
+        {% for row in result %}
+            <tr>
+                <th>{{ row.name }}</th>
+                <td>{{ row.votenum }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+<br>
+<button onclick="window.location = '/'">Home</button>
+</body>
+</html>

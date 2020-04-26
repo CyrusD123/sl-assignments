@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<title>Vote for Democratic Nominee</title>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+<form id="askForm">
+  <div style="text-align: center;">
+    <div style="display: inline-block; text-align: left;">
+        <input type="radio" id="choice1" name="choice" value="joe"> Joe Biden<br>
+        <input type="radio" id="choice2" name="choice" value="bernie"> Bernie Sanders<br>
+        <input type="radio" id="choice3" name="choice" value="other"> Other<br>
+    </div>
+  </div>
+  <input type="button" id = "submit" value="Submit">
+</form>
+
+<br>
+
+<button onclick="window.location = '/results';">View Results</button>
+
+<script>
+    $(document).ready(function(){
+      $("#submit").click(function(){
+
+        var radios = document.getElementsByName('choice');
+        var userChoice;
+
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            userChoice = radios[i].value;
+          }
+        }
+
+        $.ajax({
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(userChoice),
+          dataType: 'json',
+          url: '/',
+          success: function (data) {
+            window.location = "/submitted";
+          },
+          error: function (data) {
+            alert("Please select an item to continue.");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
