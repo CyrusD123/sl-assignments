@@ -5,9 +5,10 @@ import psycopg2
 
 # Error is somewhere here
 DATABASE_URL = os.environ['DATABASE_URL']# <
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')# <
 print("gamer time")
-cursor = conn.cursor()# <
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')# <
+
+cursor = conn.cursor()
 
 app = Flask(__name__)
 
