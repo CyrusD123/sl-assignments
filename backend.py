@@ -1,9 +1,8 @@
 from flask import Flask, jsonify, request, render_template
 import json
 import os
-print("gamer time")
 import psycopg2
-
+print("gamer time")
 DATABASE_URL = os.environ['DATABASE_URL']
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
