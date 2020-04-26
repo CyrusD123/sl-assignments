@@ -3,7 +3,7 @@ import json
 import os
 import psycopg2
 
-DATABASE_URL = os.environ.get('DATABASE_URL')# <-- Error is here
+DATABASE_URL = os.environ['DATABASE_URL']# < Error is here
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 cursor = conn.cursor()
