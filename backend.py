@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, render_template
 import json
 import os
+print("gamer time")
 import psycopg2
 
 DATABASE_URL = os.environ['DATABASE_URL']
