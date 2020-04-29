@@ -3,12 +3,22 @@
 <title>Results</title>
 <head>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        #results {
+            width:70%; 
+            margin-left:15%; 
+            margin-right:15%;
+            
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 
 <body>
 <h1>Results:</h1>
 {% if result %}
-    <table align="center">
+    <table id="results">
         <tr>
             <th>Student ID</th>
             <th>Last Name</th>
@@ -36,7 +46,11 @@
                 <td>{{ row[2] }}</td>
                 
                 {% for i in range(3, row|length) %}
-                    <td>{{ row[i] }}</td>
+                    {% if row[i] == True %}
+                        <td background-color="#51b364">{{ row[i] }}</td>
+                    {% else %}
+                        <td background-color="#e03531">{{ row[i] }}</td>
+                    {% endif %}
                 {% endfor %}
             </tr>
         {% endfor %}

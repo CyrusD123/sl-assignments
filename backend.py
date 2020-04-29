@@ -44,7 +44,6 @@ def submitThanks():
 def view():
     cursor.execute("SELECT * FROM assignments")
     passResult = cursor.fetchall()
-    print(passResult)
     return render_template('results.html', result = passResult)
 
 if __name__ == '__main__':
