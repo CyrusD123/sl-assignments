@@ -1,5 +1,5 @@
 #TODO Use heroku scheduler to clear table monday at 9 am
-#TODO update sql queries (seems as if updates don't save?)
+#TODO update sql queries
 #TODO update results.html
 #TODO get better css
 
