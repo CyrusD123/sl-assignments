@@ -27,7 +27,7 @@ def index():
         ids = data['ids']
         
         for idNum in ids:
-            cursor.execute('UPDATE assignments SET "{}" = false::boolean WHERE "ID" = {}'.format(subject, idNum))
+            cursor.execute('UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum))
         
         return json.dumps(True)
     
@@ -41,7 +41,7 @@ def submitThanks():
 @app.route('/results')
 def view():
     cursor.execute("SELECT * FROM assignments")
-    print("did it")
+    print(cursor.fetchall())
     return render_template('results.html', result = cursor.fetchall())
 
 if __name__ == '__main__':
