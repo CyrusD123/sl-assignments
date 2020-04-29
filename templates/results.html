@@ -8,6 +8,7 @@
         table, td, th {
             border-collapse: collapse;
             border: 1px solid black;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -15,7 +16,7 @@
 <body>
 <h1>Results:</h1>
 {% if result %}
-    <table id="results">
+    <table id="results" align="center">
         <tr>
             <th>Student ID</th>
             <th>Last Name</th>
@@ -44,9 +45,9 @@
                 
                 {% for i in range(3, row|length) %}
                     {% if row[i] == True %}
-                        <td style="background-color:#51b364">{{ row[i] }}</td>
+                        <td style="background-color:#51b364">Completed</td>
                     {% else %}
-                        <td style="background-color:#e03531">{{ row[i] }}</td>
+                        <td style="background-color:#e03531">Incomplete</td>
                     {% endif %}
                 {% endfor %}
             </tr>
