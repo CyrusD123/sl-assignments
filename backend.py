@@ -28,7 +28,7 @@ def index():
         
         for idNum in ids:
             query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
-            cursor.execute(query)# Executes, but doesn't save
+            cursor.execute(query)
         conn.commit()
         
         return json.dumps(True)
