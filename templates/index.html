@@ -8,6 +8,8 @@
 
 <body>
 
+<h1>SLSD Assignment Completion<br>Database</h1>
+
 <form id="askForm">
   <label for="choice1">Select a subject:</label>
   <div style="text-align: center;">
@@ -29,10 +31,10 @@
         <input type="radio" id="choice15" name="choice" value="Supports"> Supports<br>
     </div>
   </div>
-  <label for="idText">Enter the ID numbers of students who didn't turn in their work:</label>
-  <textarea id="idText" rows="4" cols="25"></textarea>
+  <label for="idText">Enter the ID numbers for<br>students who didn't turn in their work<br>(one per line):<br></label>
+  <textarea id="idText" rows="8" cols="25"></textarea>
 
-  <input type="button" id = "submit" value="Submit">
+  <input type="button" id ="submit" value="Submit">
 </form>
 
 <br>
@@ -42,29 +44,34 @@
 <script>
     $(document).ready(function(){
       $("#submit").click(function(){
+        if (confirm("Are you sure you want to continue? All changes are permanent until the end of the week.") == true) {
 
-        var radios = document.getElementsByName('choice');
-        var userChoice;
+          var radios = document.getElementsByName('choice');
+          var userChoice;
 
-        for (var i = 0; i < radios.length; i++) {
-          if (radios[i].checked) {
-            userChoice = radios[i].value;
+          for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+              userChoice = radios[i].value;
+            }
           }
+
+          var idValue = document.getElementById("idText").value;
+          var idLines = idValue.split("\n");
+
+          $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            data: {"subject": userChoice, "ids": idLines},
+            dataType: 'json',
+            url: '/',
+            success: function (data) {
+              window.location = "/submitted";
+            },
+            error: function (data) {
+              alert("Please select an item to continue.");
+            }
+          });
         }
-
-        $.ajax({
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify(userChoice),
-          dataType: 'json',
-          url: '/',
-          success: function (data) {
-            window.location = "/submitted";
-          },
-          error: function (data) {
-            alert("Please select an item to continue.");
-          }
-        });
       });
     });
   </script>

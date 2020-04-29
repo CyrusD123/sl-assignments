@@ -18,7 +18,10 @@ def index():
     if request.method == "POST":
         data = request.get_json()
 
-        cursor.execute("UPDATE votes SET votenum = (votenum + 1) WHERE name = '{}'".format(data))
+        subject = data['subject']
+        ids = data['ids']
+        print(subject + ids)
+        #cursor.execute("UPDATE votes SET votenum = (votenum + 1) WHERE name = '{}'".format(data))
         
         return json.dumps(True)
     
