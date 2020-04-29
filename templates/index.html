@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Vote for Democratic Nominee</title>
+<title>SLSD Assignment Completion Database</title>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -31,9 +31,11 @@
         <input type="radio" id="choice15" name="choice" value="Supports"> Supports<br>
     </div>
   </div>
+  <br>
+  <br>
   <label for="idText">Enter the ID numbers for<br>students who didn't turn in their work<br>(one per line):<br></label>
   <textarea id="idText" rows="8" cols="25"></textarea>
-
+  <br>
   <input type="button" id ="submit" value="Submit">
 </form>
 
@@ -61,14 +63,14 @@
           $.ajax({
             type: 'POST',
             contentType: 'application/json',
-            data: {"subject": userChoice, "ids": idLines},
+            data: JSON.stringify({"subject": userChoice, "ids": idLines}),
             dataType: 'json',
             url: '/',
             success: function (data) {
               window.location = "/submitted";
             },
             error: function (data) {
-              alert("Please select an item to continue.");
+              alert("Error! Please try again.");
             }
           });
         }

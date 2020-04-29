@@ -1,3 +1,8 @@
+#TODO Use heroku scheduler to clear table monday at 9 am
+#TODO update sql queries
+#TODO update results.html
+#TODO get better css
+
 from flask import Flask, jsonify, request, render_template
 import json
 import os
