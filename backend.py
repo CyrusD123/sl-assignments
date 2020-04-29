@@ -28,7 +28,7 @@ def index():
         
         for idNum in ids:
             query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
-            cursor.execute(query)# Doesn't execute, maybe try in psql
+            cursor.execute(query)# Executes, but doesn't save
         
         return json.dumps(True)
     
@@ -41,7 +41,8 @@ def submitThanks():
 
 @app.route('/results')
 def view():
-    cursor.execute("SELECT * FROM assignments")
+    query = "SELECT * FROM assignments"
+    cursor.execute(query)
     passResult = cursor.fetchall()
     return render_template('results.html', result = passResult)
 
