@@ -6,10 +6,11 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 cursor = conn.cursor()
 
-subject_arr = []
+subject_arr = ["Science", "Math", "English", "Social Studies", "World Language", "PE/Health/DE", "Special Education", "Music", "Art", "Family Consumer Science", "Technology Education", "Business", "Guidance Notes", "LCTI", "Supports"]
+for subject in subject_arr:
+    cursor.execute('UPDATE assignments SET "{}" = true'.format(subject))
 
 
-cursor.execute('UPDATE assignments SET * = true WHERE * = false')
 conn.commit()
 
 cursor.close()
