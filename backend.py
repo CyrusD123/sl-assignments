@@ -29,6 +29,7 @@ def index():
         for idNum in ids:
             query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
             cursor.execute(query)# Executes, but doesn't save
+        conn.commit()
         
         return json.dumps(True)
     
@@ -43,6 +44,7 @@ def submitThanks():
 def view():
     cursor.execute("SELECT * FROM assignments")
     passResult = cursor.fetchall()
+    print(passResult)
     return render_template('results.html', result = passResult)
 
 if __name__ == '__main__':
