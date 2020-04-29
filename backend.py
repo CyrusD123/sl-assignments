@@ -27,7 +27,8 @@ def index():
         ids = data['ids']
         
         for idNum in ids:
-            cursor.execute('UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum))
+            query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
+            cursor.execute(query)# Doesn't execute, maybe try in psql
         
         return json.dumps(True)
     
