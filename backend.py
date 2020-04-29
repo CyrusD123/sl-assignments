@@ -27,7 +27,7 @@ def index():
         ids = data['ids']
         
         for idNum in ids:
-            cursor.execute("UPDATE assignments SET {} = false::boolean WHERE ID = '{}'".format(subject, idNum))
+            cursor.execute('UPDATE assignments SET "{}" = false::boolean WHERE "ID" = {}'.format(subject, idNum))
         
         return json.dumps(True)
     
