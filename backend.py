@@ -41,8 +41,7 @@ def submitThanks():
 
 @app.route('/results')
 def view():
-    query = "SELECT * FROM assignments"
-    cursor.execute(query)
+    cursor.execute("SELECT * FROM assignments")
     passResult = cursor.fetchall()
     return render_template('results.html', result = passResult)
 
