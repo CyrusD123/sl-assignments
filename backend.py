@@ -25,7 +25,8 @@ def index():
 
         subject = data['subject']
         ids = data['ids']
-        print(subject + ids)
+        print(subject)
+        print(ids)
         #cursor.execute("UPDATE votes SET votenum = (votenum + 1) WHERE name = '{}'".format(data))
         
         return json.dumps(True)
