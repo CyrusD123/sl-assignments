@@ -15,14 +15,14 @@
     position: relative;
     overflow: auto;
 }
-.sidebar link {
+.sidebar a {
     display: block;
     float: left;
     color: #3F434A;
     padding: 16px;
     text-decoration: none;
 }
-.sidebar link.active {
+.sidebar a.active {
     background-color: #3F434A;
     color: white;
 }
