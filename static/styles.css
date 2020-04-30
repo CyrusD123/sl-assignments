@@ -6,10 +6,31 @@
     color: white;
     font-size: 30px;
 }
-
+.sidebar {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.sidebar link {
+    display: block;
+    color: #3F434A;
+    padding: 21px;
+    text-decoration: none;
+}
+.sidebar link.active {
+    background-color: #3F434A;
+    color: white;
+}
+.sidebar a:hover {
+    background-color: #3F434A;
+    color: white;
+}
 #submit {
     -webkit-appearance: none;
-    border-radius: 0px;
+    border-radius: 3px;
     padding: 12px 20px;
     color: white;
     font-size: 16px;

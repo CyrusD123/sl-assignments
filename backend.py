@@ -1,4 +1,5 @@
 #TODO Use heroku scheduler to clear table monday at 9 am
+#TODO Add an about page
 #TODO get better css
     #TODO add a sidebar with "SLSD Assignment Completion Database" next to it on non-home pages
     #TODO change form styling (radios, text spacing, submit button, will omit results button once sidebar is in)
@@ -46,6 +47,10 @@ def view():
     cursor.execute('SELECT * FROM assignments ORDER BY "ID" ASC')
     passResult = cursor.fetchall()
     return render_template('results.html', result = passResult)
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 if __name__ == '__main__':
     app.run()
