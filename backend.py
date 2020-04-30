@@ -1,7 +1,8 @@
 #TODO Use heroku scheduler to clear table monday at 9 am
-#TODO update sql queries
-#TODO update results.html
 #TODO get better css
+    #TODO add a sidebar with "SLSD Assignment Completion Database" next to it on non-home pages
+    #TODO change form styling (radios, text spacing, submit button, will omit results button once sidebar is in)
+    #TODO add a favicon
 
 from flask import Flask, jsonify, request, render_template
 import json
