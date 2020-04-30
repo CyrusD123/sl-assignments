@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.header {
+    padding: 30px;
+    text-align: center;
+    background: #003594;
+    color: white;
+    font-size: 30px;
+}
 body {
-    background-color: #34a5eb;
-    font-family: verdana;
-    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    color: #3F434A;
     text-align: center;
 }
