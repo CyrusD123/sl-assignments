@@ -13,11 +13,13 @@
     width: 100%;
     height: auto;
     position: relative;
+    overflow: auto;
 }
 .sidebar link {
     display: block;
+    float: left;
     color: #3F434A;
-    padding: 21px;
+    padding: 16px;
     text-decoration: none;
 }
 .sidebar link.active {
