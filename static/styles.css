@@ -6,6 +6,15 @@
     color: white;
     font-size: 30px;
 }
+
+#submit {
+    -webkit-appearance: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: white;
+    background: #003594;
+    border-color: #003594;
+}
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: white;
