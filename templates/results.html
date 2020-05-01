@@ -2,36 +2,35 @@
 <html>
 <title>Results</title>
 <head>
+    <!--Include stylesheet-->
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
-    <style>
-        table, td, th {
-            border-collapse: collapse;
-            border: 1px solid black;
-            font-size: 12px;
-        }
-    </style>
 </head>
 
 <body>
+<!--Special formatting for page header-->
 <div class="header">
     <h1>Results</h1>
 </div>
+<!--Display topbar with every page-->
 <div class="sidebar">
     <a href="/">Home</a>
     <a class="active" href="/results">Results</a>
     <a href="/about">About</a>
 </div>
 <br>
+<!--Text with link back to home page-->
 <p> 
     Return to the
      <a href="/">Home Page</a>
     .
 </p>
 <br>
+<!--Rendering with Jinja2 template engine-->
 {% if result %}
+    <!--Display table-->
     <table id="results" align="center">
         <tr>
+            <!--Top row with headers for each column-->
             <th>Student ID</th>
             <th>Last Name</th>
             <th>First Name</th>
@@ -51,24 +50,30 @@
             <th>LCTI</th>
             <th>Supports</th>
         </tr>
+        <!--Display each row-->
         {% for row in result %}
             <tr>
+                <!--Display the first three rows, ID, first name, last name-->
                 <th>{{ row[0] }}</th>
                 <td>{{ row[1] }}</td>
                 <td>{{ row[2] }}</td>
                 
+                <!--Iterate through the rest of the subjects-->
                 {% for i in range(3, row|length) %}
                     {% if row[i] == True %}
+                        <!--If completed, make cell green-->
                         <td style="background-color:#51b364">Completed</td>
                     {% else %}
+                        <!--If incomplete, make cell red-->
                         <td style="background-color:#e03531">Incomplete</td>
                     {% endif %}
                 {% endfor %}
             </tr>
         {% endfor %}
     </table>
+<!--If the result variable wasn't passed during render_template, display paragraph-->
 {% else %}
-    <p>result wasn't passed</p>
+    <p>Result wasn't passed.</p>
 {% endif %}
 </body>
 </html>

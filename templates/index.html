@@ -2,23 +2,29 @@
 <html>
 <title>SLSD Assignment Completion Database</title>
 <head>
+  <!--Get jQuery and stylesheet-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
+<!--Special formatting for page header-->
 <div class="header">
   <h1>SLSD Assignment Completion<br>Database</h1>
 </div>
+<!--Display topbar with every page-->
 <div class="sidebar">
   <a class="active" href="/">Home</a>
   <a href="/results">Results</a>
   <a href="/about">About</a>
 </div>
+<!--Form for changing database-->
 <form id="askForm">
   <label for="choice1">Select a subject:</label>
+  <!--divs keep left-aligned block on center of page-->
   <div style="text-align: center;">
     <div style="display: inline-block; text-align: left;">
+        <!--Radio buttons for subject selection-->
         <input type="radio" id="choice1" name="choice" value="Science"> Science<br>
         <input type="radio" name="choice" value="Math"> Math<br>
         <input type="radio" name="choice" value="English"> English<br>
@@ -38,37 +44,49 @@
   </div>
   <br>
   <label for="idText">Enter the ID numbers for<br>students who didn't turn in their work<br>(one per line):<br></label>
+  <!--Textarea for entering IDs-->
   <textarea id="idText" rows="10" cols="38"></textarea>
   <br>
+  <!--Submit button-->
   <input type="button" id ="submit" value="Submit">
 </form>
 
 <script>
     $(document).ready(function(){
+      // When submit is clicked:
       $("#submit").click(function(){
+        // JavaScript confirm popup
         if (confirm("Are you sure you want to continue? All changes are permanent until the end of the week.") == true) {
-
+          
+          // Get radio button(s) data
           var radios = document.getElementsByName('choice');
           var userChoice;
 
+          // Iterate through each radio to see which one is checked. Set checked one to userChoice variable
           for (var i = 0; i < radios.length; i++) {
             if (radios[i].checked) {
               userChoice = radios[i].value;
             }
           }
-
+          
+          // Get all text from the textarea
           var idValue = document.getElementById("idText").value;
+          // Split it into an array by line
           var idLines = idValue.split("\n");
 
+          // Send ajax call
           $.ajax({
             type: 'POST',
             contentType: 'application/json',
+            // Under data, send subject choice and IDs
             data: JSON.stringify({"subject": userChoice, "ids": idLines}),
             dataType: 'json',
             url: '/',
+            // On success, route to submitted page
             success: function (data) {
               window.location = "/submitted";
             },
+            // On error, display a popup and let them try again
             error: function (data) {
               alert("Error! Please make sure that all ID numbers are correct and that all parts of the form are filled in.");
             }

@@ -1,4 +1,6 @@
+/*Include Open Sans from Google Fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/*Header formatting for each page header*/
 .header {
     padding: 30px;
     text-align: center;
@@ -6,6 +8,7 @@
     color: white;
     font-size: 30px;
 }
+/*Topbar formatting*/
 .sidebar {
     margin: 0;
     padding: 0;
@@ -15,6 +18,7 @@
     position: relative;
     overflow: auto;
 }
+/*Formatting for each link (anchor tag) on topbar*/
 .sidebar a {
     display: block;
     float: left;
@@ -22,29 +26,40 @@
     padding: 16px;
     text-decoration: none;
 }
+/*Formatting for when topbar link is the current page*/
 .sidebar a.active {
     background-color: #3F434A;
     color: white;
 }
+/*Formatting for when topbar link is moused over*/
 .sidebar a:hover {
     background-color: #3F434A;
     color: white;
 }
+/*Makes indents for paragraphs on about page*/
 .aboutParagraph {
     text-indent: 35px;
 }
+/*Submit button styling*/
 #submit {
     -webkit-appearance: none;
     border-radius: 3px;
-    padding: 12px 20px;
+    padding: 10px 20px;
     color: white;
     font-size: 16px;
     background: #003594;
     border-color: #003594;
 }
+/*General body formatting*/
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: white;
     color: #3F434A;
     text-align: center;
+}
+/*Formatting for table*/
+table, td, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-size: 12px;
 }
