@@ -36,10 +36,6 @@
     background-color: #3F434A;
     color: white;
 }
-/*Makes indents for paragraphs on about page*/
-.aboutParagraph {
-    text-indent: 35px;
-}
 /*Submit button styling*/
 #submit {
     -webkit-appearance: none;
