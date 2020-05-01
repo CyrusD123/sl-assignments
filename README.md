@@ -1,4 +1,6 @@
-# lehigh-test
-A simple application made using the concepts from Lehigh University's Software Engineering Tutorial Series.
+# sl-assignments
+The SLSD Assignment Completion Database allows teachers and administrators of the Southern Lehigh School Distict to easily track which students have completed what assignments during periods of distance learning. The website works by allowing teachers to select a subject and write out the ID numbers of each student that did not complete the assignments for the subject. This information is used to update a database containing every student's information. (The database can be viewed under the "Results" tab.)
 
-The program allows the user to cast a vote for the Democratic nominee for president, and it allows them to view the results of the vote. The program utilizes GET and POST requests handled by a python backend (using Flask) and a PostgreSQL database (locally hosted).# sl-assignments
+Each student is marked as having their assignments completed by default. This way, only the students who have not completed their work have to be entered. All changes are permanent, but the database resets to default every Monday at 9:00 AM EST.
+***
+This website was written using a JavaScript/HTML/CSS frontend, a Python backend, and a PostgreSQL database. All of this was hosted on Heroku. Check out the website at [sl-assignments.herokuapp.com](sl-assignments.herokuapp.com).

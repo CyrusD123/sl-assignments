@@ -30,6 +30,9 @@
     background-color: #3F434A;
     color: white;
 }
+.aboutParagraph {
+    text-indent: 35px;
+}
 #submit {
     -webkit-appearance: none;
     border-radius: 3px;
