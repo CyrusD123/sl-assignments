@@ -31,16 +31,19 @@ def index():
         subject = data['subject']
         ids = data['ids']
         
-        # Iterate through each id to update each applicable row
-        for idNum in ids:
-            # Use double quotes for case-sensitive variables
-            query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
-            cursor.execute(query)
-        # Commit changes to the database
-        conn.commit()
+        try:
+            # Iterate through each id to update each applicable row
+            for idNum in ids:
+                # Use double quotes for case-sensitive variables
+                query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
+                cursor.execute(query)
+            # Commit changes to the database
+            conn.commit()
         
-        # Return true (there was no error)
-        return json.dumps(True)
+            # Return true (there was no error)
+            return jsonify({"status":"200 OK"})
+        except:
+            return jsonify({"status": "400"})
     
     # On page load, render index.html
     return render_template('index.html')
