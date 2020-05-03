@@ -43,7 +43,7 @@ def index():
             # Return true (there was no error)
             return jsonify({"status":"200 OK"})
         except:
-            return jsonify({"status": "400"})
+            return jsonify({"status":"400"})
     
     # On page load, render index.html
     return render_template('index.html')
