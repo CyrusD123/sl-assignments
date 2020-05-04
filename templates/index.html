@@ -68,13 +68,13 @@
                 console.log("success");
                 x = data;
                 PASS = x;
+                console.log(PASS);
               },
               // On error
               error: function (data) {
                 console.log("Error");
               }
             });
-      console.log(PASS);
       // When submit is clicked:
       $("#submit").click(function(){
         var enteredPassword = document.getElementById("passwordField").value;
