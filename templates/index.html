@@ -58,16 +58,11 @@
 
 <script type="text/Javascript">
     $(document).ready(function(){
-      // Hide password in closure
-      var pass = (function () {
-        var password = {{ PASS|safe }};
-        return function () {return password}
-      })();
       // When submit is clicked:
       $("#submit").click(function(){
-        var password = pass();
+        <script src="../password.js"></script>
         var enteredPassword = document.getElementById("passwordField").value;
-        if (enteredPassword == password) {
+        if (enteredPassword == PASS) {
           // JavaScript confirm popup
           if (confirm("Are you sure you want to continue? All changes are permanent until the end of the week.") == true) {
             
