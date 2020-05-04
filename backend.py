@@ -43,7 +43,7 @@ def index():
     
     elif request.method == 'getPassword':
         toPass = os.environ['PASS']
-        return jsonify({"password":toPass})
+        return toPass
 
     else:
         # On page load, render index.html
