@@ -67,7 +67,10 @@ alert(password);
       // When submit is clicked:
       $("#submit").click(function(){
         var password = {{ PASS|safe }};
-        if (document.getElementById("passwordField") == password) {
+        var enteredPassword = document.getElementById("passwordField");
+        console.log(password);
+        console.log(enteredPassword);
+        if (enteredPassword == password) {
           // JavaScript confirm popup
           if (confirm("Are you sure you want to continue? All changes are permanent until the end of the week.") == true) {
             
@@ -107,7 +110,7 @@ alert(password);
           }
         }
         else {
-          alert("Password was incorrect! Please try again.")
+          alert("Password was incorrect! Please try again.");
         }
       });
     });
