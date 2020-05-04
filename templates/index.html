@@ -67,7 +67,7 @@ alert(password);
       // When submit is clicked:
       $("#submit").click(function(){
         var password = {{ PASS|safe }};
-        var enteredPassword = document.getElementById("passwordField");
+        var enteredPassword = document.getElementById("passwordField").value;
         console.log(password);
         console.log(enteredPassword);
         if (enteredPassword == password) {
