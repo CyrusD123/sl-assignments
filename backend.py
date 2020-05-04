@@ -72,7 +72,41 @@ def about():
 # Display emails
 @app.route('/email')
 def email():
-    return render_template("email.html")
+    # Arrays to hold emails by number of incomplete
+    one = []
+    two = []
+    three = []
+    four = []
+    five = []
+    sixPlus = []
+
+    # Counter for incomplete assignments
+    incCount = 0
+
+    # Get everything from database
+    cursor.execute('SELECT * FROM assignments')
+    # Save each row in list
+    table = cursor.fetchall()
+    for row in table:
+        incCount = 0
+        for i in range (3, (len(row)-1)):
+            if row[i] == False:
+                incCount += 1
+        if (incCount == 1):
+            one.append(row[len(row)-1])
+        elif (incCount == 2):
+            two.append(row[len(row)-1])
+        elif (incCount == 3):
+            three.append(row[len(row)-1])
+        elif (incCount == 4):
+            four.append(row[len(row)-1])
+        elif (incCount == 5):
+            five.append(row[len(row)-1])
+        elif (incCount >= 6):
+            sixPlus.append(row[len(row)-1])
+        
+        
+    return render_template("email.html", oneArr = one, twoArr = two, threeArr = three, fourArr = four, fiveArr = five, sixArr = sixPlus)
 
 # When program is run
 if __name__ == '__main__':
