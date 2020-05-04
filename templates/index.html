@@ -18,6 +18,12 @@
   <a href="/results">Results</a>
   <a href="/about">About</a>
 </div>
+
+<script type="text/Javascript">
+var password = {{ PASS|safe }};
+alert(password);
+</script>
+
 <!--Form for changing database-->
 <form id="askForm">
   <label for="choice1">Select a subject:</label>
@@ -83,11 +89,11 @@
             dataType: 'json',
             url: '/',
             // On success, route to submitted page
-            success: function (returnData) {
+            success: function (data) {
               window.location = "/submitted";
             },
             // On error, display a popup and let them try again
-            error: function (xhr, status, error) {
+            error: function (data) {
               alert("Error! Please make sure that all ID numbers are correct and that all parts of the form are filled in.");
             }
           });
