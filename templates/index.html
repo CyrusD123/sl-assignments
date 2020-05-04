@@ -4,6 +4,7 @@
 <head>
   <!--Get jQuery and stylesheet-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../password.js"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
@@ -52,6 +53,7 @@
   <label for="passwordField">Password:</label>
   <input type="password" id="passwordField" required>
   <br>
+  <br>
   <!--Submit button-->
   <input type="button" id ="submit" value="Submit">
 </form>
@@ -60,7 +62,6 @@
     $(document).ready(function(){
       // When submit is clicked:
       $("#submit").click(function(){
-        <script src="../password.js"></script>
         var enteredPassword = document.getElementById("passwordField").value;
         if (enteredPassword == PASS) {
           // JavaScript confirm popup
