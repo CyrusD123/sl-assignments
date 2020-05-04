@@ -4,7 +4,6 @@
 <head>
   <!--Get jQuery and stylesheet-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="password.js"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
@@ -60,6 +59,22 @@
 
 <script type="text/Javascript">
     $(document).ready(function(){
+      var PASS;
+      $.ajax({
+              type: 'getPassword',
+              contentType: 'application/json',
+              data: JSON.stringify({"message": "Give me the password."}),
+              dataType: 'json',
+              url: '/',
+              // On success
+              success: function (data) {
+                PASS = data.password;
+              },
+              // On error
+              error: function (data) {
+                console.log("Error");
+              }
+            });
       // When submit is clicked:
       $("#submit").click(function(){
         var enteredPassword = document.getElementById("passwordField").value;
