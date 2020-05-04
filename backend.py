@@ -41,11 +41,11 @@ def index():
         # Return true (there was no error)
         return json.dumps(True)
     
-    elif request.method == 'getPassword':
+    elif request.method == "getPassword":
         toPass = os.environ['PASS']
         return toPass
 
-    else:
+    elif request.method == "GET":
         # On page load, render index.html
         return render_template('index.html')
 
