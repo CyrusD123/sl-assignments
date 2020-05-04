@@ -40,8 +40,7 @@ def index():
             conn.commit()
             
             # Return true (there was no error)
-            #return json.dumps(True)
-            return "OK", 200
+            return json.dumps(True)
         except:
             return "Make sure all ID numbers are correct.", 400
     
