@@ -1,4 +1,3 @@
-#TODO Verigy heroku scheduler clear table monday at 9 am
 #TODO add a favicon
 
 from flask import Flask, jsonify, request, render_template
@@ -31,16 +30,20 @@ def index():
         subject = data['subject']
         ids = data['ids']
         
-        # Iterate through each id to update each applicable row
-        for idNum in ids:
-            # Use double quotes for case-sensitive variables
-            query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
-            cursor.execute(query)
-        # Commit changes to the database
-        conn.commit()
-        
-        # Return true (there was no error)
-        return json.dumps(True)
+        try:
+            # Iterate through each id to update each applicable row
+            for idNum in ids:
+                # Use double quotes for case-sensitive variables
+                query = 'UPDATE assignments SET "{}" = false WHERE "ID" = {}'.format(subject, idNum)
+                cursor.execute(query)
+            # Commit changes to the database
+            conn.commit()
+            
+            # Return true (there was no error)
+            #return json.dumps(True)
+            return "OK", 200
+        except:
+            return "Make sure all ID numbers are correct.", 400
     
     # On page load, render index.html
     return render_template('index.html')
