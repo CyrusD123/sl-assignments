@@ -1,6 +1,6 @@
 #TODO add a favicon
 
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, Response
 import json
 import os
 import psycopg2
@@ -40,9 +40,15 @@ def index():
             conn.commit()
             
             # Return true (there was no error)
-            return json.dumps(True)
+            return Response(
+                "OK",
+                status=200,
+            )
         except:
-            return json.dumps(False)
+            return Response(
+                "Make sure all ID numbers are correct.",
+                status=400,
+            )
     
     # On page load, render index.html
     return render_template('index.html')
