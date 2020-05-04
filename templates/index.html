@@ -63,11 +63,12 @@
       $.ajax({
               type: 'getPassword',
               url: '/',
+              data: 'Give me the password',
+              dataType: "string",
               // On success
               success: function (data) {
                 console.log("success");
-                var x = data;
-                PASS = x;
+                PASS = data;
                 console.log(PASS);
               },
               // On error
