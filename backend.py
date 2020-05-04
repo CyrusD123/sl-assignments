@@ -71,7 +71,7 @@ def about():
 
 # Display emails
 @app.route('/email')
-def about():
+def email():
     return render_template("email.html")
 
 # When program is run
