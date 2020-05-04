@@ -16,9 +16,9 @@ cursor = conn.cursor()
 app = Flask(__name__)
 
 # / and /index lead to same page
-@app.route('/', methods=['GET', 'POST', 'getPassword'])
+@app.route('/', methods=['GET', 'POST', 'GETPASSWORD'])
 
-@app.route('/index', methods=['GET', 'POST', 'getPassword'])
+@app.route('/index', methods=['GET', 'POST', 'GETPASSWORD'])
 def index():
     
     # On form submission:
@@ -41,7 +41,7 @@ def index():
         # Return true (there was no error)
         return json.dumps(True)
     
-    elif request.method == "getPassword":
+    elif request.method == "GETPASSWORD":
         toPass = os.environ['PASS']
         return toPass
 
