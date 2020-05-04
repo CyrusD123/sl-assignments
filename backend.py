@@ -42,7 +42,7 @@ def index():
             # Return true (there was no error)
             return json.dumps(True)
         except:
-            return "Make sure all ID numbers are correct.", 400
+            return json.dumps(False)
     
     # On page load, render index.html
     return render_template('index.html')
