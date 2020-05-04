@@ -22,42 +22,36 @@
 <div style="text-align: left;">
     {% if oneArr, twoArr, threeArr, fourArr, fiveArr, sixArr%}
         <p>Students with 1 assignment incomplete:</p>
-        <br>
         {% for email in oneArr %}
             <p>{{ email }}</p>
         {% endfor %}
         <br>
         <br>
         <p>Students with 2 assignments incomplete:</p>
-        <br>
         {% for email in twoArr %}
             <p>{{ email }}</p>
         {% endfor %}
         <br>
         <br>
         <p>Students with 3 assignments incomplete:</p>
-        <br>
         {% for email in threeArr %}
             <p>{{ email }}</p>
         {% endfor %}
         <br>
         <br>
         <p>Students with 4 assignments incomplete:</p>
-        <br>
         {% for email in fourArr %}
             <p>{{ email }}</p>
         {% endfor %}
         <br>
         <br>
         <p>Students with 5 assignments incomplete:</p>
-        <br>
         {% for email in fiveArr %}
             <p>{{ email }}</p>
         {% endfor %}
         <br>
         <br>
         <p>Students with at least 6 assignments incomplete:</p>
-        <br>
         {% for email in sixArr %}
             <p>{{ email }}</p>
         {% endfor %}
