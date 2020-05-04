@@ -42,7 +42,7 @@ def index():
             # Return true (there was no error)
             return "OK", 200
         except:
-            return "Make sure all ID numbers are correct.", 400
+            return "CHeck IDs", 400
     
     # On page load, render index.html
     return render_template('index.html')
