@@ -40,12 +40,9 @@ def index():
             conn.commit()
             
             # Return true (there was no error)
-            return json.dumps(True)
+            return "OK", 200
         except:
-            return Response(
-                "Make sure all ID numbers are correct.",
-                status=400,
-            )
+            return "Make sure all ID numbers are correct.", 400
     
     # On page load, render index.html
     return render_template('index.html')
