@@ -44,7 +44,7 @@ def index():
     toPass = os.environ['PASS']
 
     # On page load, render index.html
-    return render_template('index.html', PASS=toPass)
+    return render_template('index.html', PASS=json.dumps(toPass))
 
 # Render submitted page after form submission
 @app.route('/submitted')
