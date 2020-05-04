@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Submission Received</title>
+<title>About</title>
 <head>
     <!--Get stylesheet-->
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -9,24 +9,19 @@
 <body>
 <!--Special formatting for page header-->
 <div class="header">
-    <h1>Submission Received</h1>
+    <h1>Email</h1>
 </div>
 <!--Display topbar with every page-->
 <div class="sidebar">
     <a href="/">Home</a>
     <a href="/results">Results</a>
     <a href="/about">About</a>
-    <a href="/email">Email</a>
+    <a class="active" href="/email">Email</a>
 </div>
 <br>
-<!--Display links to view results or go back to the home page-->
-<p> 
-View the
- <a href="/results">Results</a>
- or return to the
- <a href="/">Home Page</a>
-.
-</p>
+<div text-align="left">
+    <p>emails here</p>
+</div>
 
 </body>
 </html>

@@ -69,6 +69,11 @@ def view():
 def about():
     return render_template("about.html")
 
+# Display emails
+@app.route('/email')
+def about():
+    return render_template("email.html")
+
 # When program is run
 if __name__ == '__main__':
     app.run()

@@ -16,6 +16,7 @@
     <a href="/">Home</a>
     <a class="active" href="/results">Results</a>
     <a href="/about">About</a>
+    <a href="/email">Email</a>
 </div>
 <br>
 <!--Text with link back to home page-->
@@ -49,6 +50,7 @@
             <th>Guidance Notes</th>
             <th>LCTI</th>
             <th>Supports</th>
+            <th>Email</th>
         </tr>
         <!--Display each row-->
         {% for row in result %}
@@ -59,7 +61,7 @@
                 <td>{{ row[2] }}</td>
                 
                 <!--Iterate through the rest of the subjects-->
-                {% for i in range(3, row|length) %}
+                {% for i in range(3, row|length - 1) %}
                     {% if row[i] == True %}
                         <!--If completed, make cell green-->
                         <td style="background-color:#51b364">Completed</td>
@@ -68,6 +70,8 @@
                         <td style="background-color:#e03531">Incomplete</td>
                     {% endif %}
                 {% endfor %}
+
+                <td>{{ row[row|length - 1] }}</td>
             </tr>
         {% endfor %}
     </table>
