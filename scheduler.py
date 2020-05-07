@@ -1,6 +1,7 @@
 import datetime
 
 x = 3
+x += 1
 
 # Only execute on Monday
 if (datetime.datetime.today().weekday() == 0):
