@@ -66,6 +66,9 @@ def edit():
         subject = data['subject']
         ids = data['ids']
         
+        print(subject)
+        print(ids)
+
         # Iterate through each id to update each applicable row
         for idNum in ids:
             # Use double quotes for case-sensitive variables
@@ -82,7 +85,7 @@ def edit():
         return toPass
 
     elif request.method == "GET":
-        # On page load, render index.html
+        # On page load, render edit.html
         return render_template('edit.html')
 
 # Results page
