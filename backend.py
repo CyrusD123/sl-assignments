@@ -54,6 +54,37 @@ def index():
 def submitThanks():
     return render_template("submitted.html")
 
+@app.route('/edit', methods=['GET', 'POST', 'GETPASSWORD'])
+def edit():
+    
+    # On form submission:
+    if request.method == "POST":
+        # Get data from JSON string
+        data = request.get_json()
+
+        # Set the two part of the data, subject (string) and ids (list of strings)
+        subject = data['subject']
+        ids = data['ids']
+        
+        # Iterate through each id to update each applicable row
+        for idNum in ids:
+            # Use double quotes for case-sensitive variables
+            query = 'UPDATE assignments SET "{}" = true WHERE "ID" = {}'.format(subject, idNum)
+            cursor.execute(query)
+        # Commit changes to the database
+        conn.commit()
+        
+        # Return true (there was no error)
+        return json.dumps(True)
+    
+    elif request.method == "GETPASSWORD":
+        toPass = os.environ['PASS']
+        return toPass
+
+    elif request.method == "GET":
+        # On page load, render index.html
+        return render_template('edit.html')
+
 # Results page
 @app.route('/results')
 def view():

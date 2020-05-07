@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>SLSD Assignment Completion Database</title>
+<title>Edit</title>
 <head>
   <!--Get jQuery and stylesheet-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -10,19 +10,21 @@
 <body>
 <!--Special formatting for page header-->
 <div class="header">
-  <h1>SLSD Assignment Completion<br>Database</h1>
+  <h1>Edit</h1>
 </div>
 <!--Display topbar with every page-->
 <div class="sidebar">
-  <a class="active" href="/">Home</a>
-  <a href="/edit">Edit</a>
+  <a href="/">Home</a>
+  <a class="active" href="/edit">Edit</a>
   <a href="/results">Results</a>
   <a href="/email">Email</a>
   <a href="/about">About</a>
 </div>
 
-<!--Form for changing database-->
-<form id="askForm">
+<!--Form for editing database after a mistake-->
+<form id="editForm">
+  <p style="width: 30%;">Made a mistake when submitting the form? Use this form to mark students as complete when they were previously marked as incomplete.</p>
+  <br>
   <label for="choice1">Select a subject:</label>
   <!--divs keep left-aligned block on center of page-->
   <div style="text-align: center;">
@@ -46,7 +48,7 @@
     </div>
   </div>
   <br>
-  <label for="idText">Enter the ID numbers for<br>students who didn't turn in their work<br>(one per line):<br></label>
+  <label for="idText">Enter the ID numbers for<br>students who need to be changed<br>(one per line):<br></label>
   <!--Textarea for entering IDs-->
   <textarea id="idText" rows="10" cols="38"></textarea>
   <br>
