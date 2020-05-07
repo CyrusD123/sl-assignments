@@ -1,9 +1,17 @@
-#TODO add a favicon
+"""TODO add Google Sheets compatability
+TODO make history page:
+- scheduler.py updates every week with date range of table
+- import to backend
+- render_template history.html
+- by default, pass dates during render_template as a drop-down menu, then send jQuery with chosen one
+- {% if result %} on history.html: display table with wanted range
+- on success: display transparent "loading..." over table"""
 
 from flask import Flask, jsonify, request, render_template
 import json
 import os
 import psycopg2
+from scheduler import x
 
 # Connect to database using heroku environment variable DATABASE_URL
 DATABASE_URL = os.environ['DATABASE_URL']
@@ -46,6 +54,11 @@ def index():
         return toPass
 
     elif request.method == "GET":
+
+        #Test if variables are saved even after heroku dyno sleeps
+        print(x)
+
+
         # On page load, render index.html
         return render_template('index.html')
 
