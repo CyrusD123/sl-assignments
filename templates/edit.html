@@ -23,7 +23,7 @@
 
 <!--Form for editing database after a mistake-->
 <form id="editForm">
-  <p style="width: 30%;">Made a mistake when submitting the form? Use this form to mark students as<br>complete when they were previously marked as incomplete.</p>
+  <p>Made a mistake when submitting the form? Use this form to mark students as<br>complete when they were previously marked as incomplete.</p>
   <br>
   <label for="choice1">Select a subject:</label>
   <!--divs keep left-aligned block on center of page-->
@@ -66,7 +66,7 @@
       var PASS;
       $.ajax({
               type: 'GETPASSWORD',
-              url: '/',
+              url: '/edit',
               // On success
               success: function (data) {
                 PASS = data;
@@ -106,7 +106,7 @@
               // Under data, send subject choice and IDs
               data: JSON.stringify({"subject": userChoice, "ids": idLines}),
               dataType: 'json',
-              url: '/',
+              url: '/edit',
               // On success, route to submitted page
               success: function (data) {
                 window.location = "/submitted";

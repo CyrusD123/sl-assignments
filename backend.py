@@ -65,14 +65,11 @@ def edit():
         # Set the two part of the data, subject (string) and ids (list of strings)
         subject = data['subject']
         ids = data['ids']
-        
-        print(subject)
-        print(ids)
 
         # Iterate through each id to update each applicable row
         for idNum in ids:
             # Use double quotes for case-sensitive variables
-            query = """UPDATE assignments SET "{}" = 'true' WHERE "ID" = {}""".format(subject, idNum)
+            query = 'UPDATE assignments SET "{}" = true WHERE "ID" = {}'.format(subject, idNum)
             cursor.execute(query)
         # Commit changes to the database
         conn.commit()
