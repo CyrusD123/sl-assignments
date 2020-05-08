@@ -97,7 +97,7 @@
         selectedRange = document.getElementById("dateSelect").value;
         // Send ajax call
         $.ajax({
-            type: 'VIEWHISTORYTABLE',
+            type: 'GET',
             contentType: 'application/json',
             // Under data, send subject choice and IDs
             data: JSON.stringify({"dateRange": selectedRange}),
@@ -105,7 +105,6 @@
             // On success, route to submitted page
             success: function (data) {
                 document.getElementById("loadingText").style.display = "block";
-                document.write(data)
             },
             // On error, display a popup and let them try again
             error: function (data) {
