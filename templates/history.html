@@ -107,9 +107,11 @@
                 /*
                 var dataBody = $.parseHTML(data);
                 $("body").html(dataBody);
-                */
+                
                 var body = data.substring(data.indexOf("<body>")+"<body>".length,data.indexOf("</body>"));
                 $('body').html(body);
+                */
+                document.write(data);
             },
             // On error, display a popup and let them try again
             error: function (data) {
