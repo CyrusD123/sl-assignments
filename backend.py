@@ -1,4 +1,5 @@
 """TODO add Google Sheets compatability
+TODO Verify scheduler works
 TODO make history page:
 - scheduler.py creates copy of table, saving date range to config variable
 - render_template history.html
