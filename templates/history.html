@@ -104,9 +104,8 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
-                // Fall back on document.write
                 var dataBody = $.parseHTML(data);
-                console.log(dataBody);
+                dataBody = dataBody.getElementsByTagName("body")[0].outerHTML;
                 $("body").html(dataBody);
             },
             // On error, display a popup and let them try again
