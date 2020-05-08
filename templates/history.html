@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-<title>Results</title>
+<title>History</title>
 <head>
     <!--Include favicon-->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!--Get jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!--Include stylesheet-->
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -11,25 +13,28 @@
 <body>
 <!--Special formatting for page header-->
 <div class="header">
-    <h1>Results</h1>
+    <h1>History</h1>
 </div>
 <!--Display topbar with every page-->
 <div class="sidebar">
     <a href="/">Home</a>
     <a href="/edit">Edit</a>
-    <a class="active" href="/results">Results</a>
-    <a href="/history">History</a>
+    <a href="/results">Results</a>
+    <a class="active" href="/history">History</a>
     <a href="/email">Email</a>
     <a href="/about">About</a>
 </div>
 <br>
-<!--Text with link back to home page-->
-<p> 
-    Return to the
-     <a href="/">Home Page</a>
-    .
-</p>
-<br>
+<form>
+    <select id="dateSelect">
+        {% for date in dates %}
+            <option value="{{ date }}">{{ date }}</option>
+        {% endfor %}
+    </select>
+</form>
+<div id="loadingText" style="display: none;">
+    <p>Loading...</p>
+</div>
 <!--Rendering with Jinja2 template engine-->
 {% if result %}
     <!--Display table-->
@@ -79,9 +84,33 @@
             </tr>
         {% endfor %}
     </table>
-<!--If the result variable wasn't passed during render_template, display paragraph-->
-{% else %}
-    <p>Result wasn't passed.</p>
 {% endif %}
+
+<script type="text/Javascript">
+    $(document).ready(function(){
+      // When a new drop-down item is selected:
+      $("#dateSelect").change(function(){
+        // Get dropdown field choice
+        selectedRange = document.getElementById("dateSelect").value;
+        // Send ajax call
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            // Under data, send subject choice and IDs
+            data: JSON.stringify({"dateRange": selectedRange}),
+            dataType: 'json',
+            url: '/history',
+            // On success, route to submitted page
+            success: function (data) {
+                document.getElementById("loadingText").style.display = "block";
+            },
+            // On error, display a popup and let them try again
+            error: function (data) {
+                alert(data);
+            }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
