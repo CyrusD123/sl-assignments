@@ -26,6 +26,7 @@
 </div>
 <br>
 <form>
+    <label for="dateSelect">Select a range of dates from the drop-down menu:</label>
     <select id="dateSelect">
         {% for date in dates %}
             <option value="{{ date }}">{{ date }}</option>
@@ -94,11 +95,9 @@
         selectedRange = document.getElementById("dateSelect").value;
         // Send ajax call
         $.ajax({
-            type: 'POST',
-            contentType: 'application/json',
+            type: 'VIEWHISTORYTABLE',
             // Under data, send subject choice and IDs
             data: JSON.stringify({"dateRange": selectedRange}),
-            dataType: 'json',
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
@@ -106,7 +105,7 @@
             },
             // On error, display a popup and let them try again
             error: function (data) {
-                alert(data);
+                console.log(data);
             }
         });
       });

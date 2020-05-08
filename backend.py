@@ -102,13 +102,13 @@ def view():
     # Render results.html with result variable passed
     return render_template('results.html', result = passResult)
 
-@app.route('/history', methods=['GET', 'POST'])
+@app.route('/history', methods=['GET', 'VIEWHISTORYTABLE'])
 def history():
     # Get dates and turn them into an array
     dates = os.environ['HISTORY_DATES']
     dates = dates.split(',')
 
-    if request.method == 'POST':
+    if request.method == 'VIEWHISTORYTABLE':
         data = request.get_json()
         selectedDate = data['dateRange']
 
