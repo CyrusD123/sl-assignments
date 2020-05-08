@@ -102,23 +102,22 @@ def view():
     # Render results.html with result variable passed
     return render_template('results.html', result = passResult)
 
-@app.route('/history', methods=['GET'])
+@app.route('/history')
 def history():
     # Get dates and turn them into an array
     dates = os.environ['HISTORY_DATES']
     dates = dates.split(',')
 
-    if request.method == 'GET':
-        data = request.get_json()
-        if data != None:
-            selectedDate = data['dateRange']
+    data = request.get_json()
+    if data and 'dateRange' in data:
+        selectedDate = data['dateRange']
 
-            cursor.execute('SELECT * FROM "{}" ORDER BY "ID" ASC'.format(selectedDate))
-            result = cursor.fetchall()
+        cursor.execute('SELECT * FROM "{}" ORDER BY "ID" ASC'.format(selectedDate))
+        result = cursor.fetchall()
 
-            return render_template('history.html', dates = dates, result = result)
-        else:
-            return render_template('history.html', dates = dates)
+        return render_template('history.html', dates = dates, result = result)
+    else:
+        return render_template('history.html', dates = dates)
 
 # Display about page
 @app.route('/about')
