@@ -104,7 +104,7 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
-                document.write(data);
+                $("html").replaceWith(data);
             },
             // On error, display a popup and let them try again
             error: function (data) {
