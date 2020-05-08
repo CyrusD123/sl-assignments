@@ -100,7 +100,7 @@ def view():
     passResult = cursor.fetchall()
 
     dateArr = os.environ['HISTORY_DATES']
-    print(dateArr)
+    print(dateArr.append(" "))
     print(passResult)
 
     # Render results.html with result variable passed
