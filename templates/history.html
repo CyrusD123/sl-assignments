@@ -104,9 +104,12 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
+                /*
                 var dataBody = $.parseHTML(data);
-                dataBody = dataBody.getElementsByTagName("body")[0].outerHTML;
                 $("body").html(dataBody);
+                */
+                var body = data.substring(data.indexOf("<body>")+"body".length,data.indexOf("</body>"));
+                $('body').html(body);
             },
             // On error, display a popup and let them try again
             error: function (data) {
