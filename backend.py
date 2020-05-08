@@ -110,7 +110,7 @@ def history():
     print("got before request")
     data = request.get_json()
     print("got after request")
-    if data and 'dateRange' in data:
+    if 'dateRange' in data:
         print("got inside if")
         selectedDate = data['dateRange']
 
