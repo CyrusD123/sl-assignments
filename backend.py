@@ -110,9 +110,9 @@ def history():
 
     if request.method == 'VIEWHISTORY':
         data = request.get_json()
-        selectedDate = data['dateRange']
+        dateIndex = data['dateRange']
 
-        cursor.execute('SELECT * FROM "{}" ORDER BY "ID" ASC'.format(selectedDate))
+        cursor.execute('SELECT * FROM "{}" ORDER BY "ID" ASC'.format(dateIndex))
         result = cursor.fetchall()
 
         return render_template('history.html', dates = dates, result = result)

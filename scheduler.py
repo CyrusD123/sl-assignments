@@ -13,6 +13,7 @@ if (datetime.datetime.today().weekday() == 0):
     cursor = conn.cursor()
 
     # Get date array from config var (format 'd1,d2,d3,d4' ) and convert to array
+    # d1 is earliest, d4 is latest
     dateArr = os.environ['HISTORY_DATES']
     dateArr = dateArr.split(',')
 
@@ -25,16 +26,17 @@ if (datetime.datetime.today().weekday() == 0):
     # Add new date range to array
     dateArr.append(dateRange)
 
-    # Delete oldest table from database and array
-    cursor.execute('DROP TABLE "{}"'.format(dateArr[0]))
+    # Delete oldest date from array
     del dateArr[0]
 
-    # Copy table with new date
-    cursor.execute('CREATE TABLE "{}" AS TABLE assignments'.format(dateArr[len(dateArr)-1]))
-
+    # Shift over dates 0<-1 1<-2 2<-3 + 3
+    for i in range(len(dateArr)):
+        cursor.execute('DELETE FROM "{}"'.format(i))
+        if i != (len(dateArr)-1):
+            cursor.execute('INSERT INTO "{}" SELECT * FROM "{}"'.format(i, (i+1)))
+        else:
+            cursor.execute('INSERT INTO "{}" SELECT * FROM assignments')
     conn.commit()
-
-
 
     #Build string to commit to variable
     newVar = ""

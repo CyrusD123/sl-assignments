@@ -29,8 +29,8 @@
     <label for="dateSelect">Select a range of dates from the drop-down menu:</label>
     <br>
     <select id="dateSelect">
-        {% for date in dates %}
-            <option value="{{ date }}">{{ date }}</option>
+        {% for i in range(dates|length) %}
+            <option value="{{ i }}">{{ dates[i] }}</option>
         {% endfor %}
     </select>
 </form>
