@@ -105,8 +105,8 @@
             // On success, route to submitted page
             success: function (data) {
                 // Fall back on document.write
-                var dataBody = $(data);
-                dataBody = $(data).getElementsByTagName("body")[0].outerHTML;
+                var dataBody = $.parseHTML(data);
+                console.log(dataBody);
                 $("body").html(dataBody);
             },
             // On error, display a popup and let them try again
