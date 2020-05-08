@@ -1,12 +1,16 @@
 import datetime
 
-x = 3
-x += 1
 
 # Only execute on Monday
 if (datetime.datetime.today().weekday() == 0):
     import os
     import psycopg2
+
+    # Get date in YYYY-MM-DD format
+    mondayDate = datetime.datetime.now().date() - datetime.timedelta(7)
+    fridayDate = datetime.datetime.now().date() - datetime.timedelta(3)
+    # Create date range
+    dateRange = str(mondayDate) + "-" + str(fridayDate)
 
     # Connect to db
     DATABASE_URL = os.environ['DATABASE_URL']
