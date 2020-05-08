@@ -52,11 +52,6 @@ def index():
         return toPass
 
     elif request.method == "GET":
-
-        dateArr = os.environ['HISTORY_DATES']
-        dateArr = dateArr.split(',')
-        print(dateArr)
-
         # On page load, render index.html
         return render_template('index.html')
 
