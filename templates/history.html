@@ -96,6 +96,7 @@
         // Send ajax call
         $.ajax({
             type: 'VIEWHISTORYTABLE',
+            contentType: 'application/json',
             // Under data, send subject choice and IDs
             data: JSON.stringify({"dateRange": selectedRange}),
             url: '/history',
@@ -105,7 +106,7 @@
             },
             // On error, display a popup and let them try again
             error: function (data) {
-                console.log(data);
+                console.log(data)
             }
         });
       });
