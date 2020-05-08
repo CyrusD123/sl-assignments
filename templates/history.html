@@ -6,10 +6,8 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <!--Get jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!--Include stylesheet (jQuery .html method requeries @import)-->
-    <style>
-        @import url("{{ url_for('./static', filename='styles.css') }}");
-    </style>
+    <!--Include stylesheet-->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
@@ -106,7 +104,7 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
-                $("html").html(data);
+                documet.write(data);
             },
             // On error, display a popup and let them try again
             error: function (data) {
