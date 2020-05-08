@@ -27,12 +27,14 @@
 <br>
 <form>
     <label for="dateSelect">Select a range of dates from the drop-down menu:</label>
+    <br>
     <select id="dateSelect">
         {% for date in dates %}
             <option value="{{ date }}">{{ date }}</option>
         {% endfor %}
     </select>
 </form>
+<br>
 <div id="loadingText" style="display: none;">
     <p>Loading...</p>
 </div>
@@ -102,6 +104,7 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
+                document.getElementById("loadingText").style.display = "block";
                 document.write(data)
             },
             // On error, display a popup and let them try again

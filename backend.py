@@ -112,7 +112,7 @@ def history():
         data = request.get_json()
         selectedDate = data['dateRange']
 
-        cursor.execute('SELECT * FROM "{}"'.format(selectedDate))
+        cursor.execute('SELECT * FROM "{}" ORDER BY "ID" ASC'.format(selectedDate))
         result = cursor.fetchall()
 
         return render_template('history.html', dates = dates, result = result)
