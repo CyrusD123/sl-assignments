@@ -102,6 +102,7 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
+                console.log(data)
                 document.getElementById("loadingText").style.display = "block";
             },
             // On error, display a popup and let them try again
