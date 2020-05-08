@@ -52,6 +52,11 @@ def index():
         return toPass
 
     elif request.method == "GET":
+
+        dateArr = os.environ['HISTORY_DATES']
+        dateArr = dateArr.split(',')
+        print(dateArr)
+
         # On page load, render index.html
         return render_template('index.html')
 
@@ -98,11 +103,6 @@ def view():
     cursor.execute('SELECT * FROM assignments ORDER BY "ID" ASC')
     # Save each row as an element in a list
     passResult = cursor.fetchall()
-
-    dateArr = os.environ['HISTORY_DATES']
-    print(dateArr.append(" "))
-    print(passResult)
-
     # Render results.html with result variable passed
     return render_template('results.html', result = passResult)
 
