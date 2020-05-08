@@ -39,6 +39,7 @@
     <p>Loading...</p>
 </div>
 <!--Rendering with Jinja2 template engine-->
+<div id="tableArea">
 {% if result %}
     <!--Display table-->
     <table id="results" align="center">
@@ -88,6 +89,7 @@
         {% endfor %}
     </table>
 {% endif %}
+</div    >
 
 <script type="text/Javascript">
     $(document).ready(function(){
@@ -104,14 +106,8 @@
             url: '/history',
             // On success, route to submitted page
             success: function (data) {
-                /*
-                var dataBody = $.parseHTML(data);
-                $("body").html(dataBody);
-                
-                var body = data.substring(data.indexOf("<body>")+"<body>".length,data.indexOf("</body>"));
-                $('body').html(body);
-                */
-                document.write(data);
+                var body = data.substring(data.indexOf('<div id="tableArea">')+'<div id="tableArea">'.length,data.indexOf("</div    >"));
+                $('tableArea').html(body);
             },
             // On error, display a popup and let them try again
             error: function (data) {
