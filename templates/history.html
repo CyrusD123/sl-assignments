@@ -89,7 +89,7 @@
         {% endfor %}
     </table>
 {% endif %}
-</div    >
+</div>
 
 <script type="text/Javascript">
     $(document).ready(function(){
@@ -107,7 +107,7 @@
             // On success, route to submitted page
             success: function (data) {
                 var body = data.substring(data.indexOf('<div id="tableArea">')+'<div id="tableArea">'.length,data.indexOf("</div    >"));
-                $('tableArea').html(body);
+                $('#tableArea').html(body);
             },
             // On error, display a popup and let them try again
             error: function (data) {
