@@ -13,7 +13,6 @@ import os
 import psycopg2
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import asyncio
 
 # Connect to database using heroku environment variable DATABASE_URL
 DATABASE_URL = os.environ['DATABASE_URL']
@@ -22,9 +21,12 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')# Heroku requires SSL
 # Create a cursor to execute queries
 cursor = conn.cursor()
 
+# Set flag for if updateSheet() needs to run
+sheetRun = False
+
 # Define function for updating google sheets
 # It works by deleting everything and replacing it with SELECT * FROM assignments every time the database is edited
-async def updateSheet():
+def updateSheet():
     # Output data (currently a dict) to file so that you can use a python environment variable
     data = {
         "type": "service_account",
@@ -94,11 +96,9 @@ def index():
             cursor.execute(query)
         # Commit changes to the database
         conn.commit()
-        
-        # Run function asynchroniously, still need to update for other functions
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(updateSheet())
-        loop.close()
+
+        # Set flag for updateSheet() to happen
+        sheetRun = True
 
         # Return true (there was no error)
         return json.dumps(True)
@@ -136,7 +136,7 @@ def edit():
         # Commit changes to the database
         conn.commit()
 
-        updateSheet()
+        sheetRun = True
         
         # Return true (there was no error)
         return json.dumps(True)
@@ -219,6 +219,10 @@ def email():
         
         
     return render_template("email.html", oneArr = one, twoArr = two, threeArr = three, fourArr = four, fiveArr = five, sixArr = sixPlus)
+
+if sheetRun == True:
+    sheetRun = False
+    updateSheet()
 
 # When program is run
 if __name__ == '__main__':
