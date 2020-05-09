@@ -35,7 +35,7 @@ if (datetime.datetime.today().weekday() == 0):
         if i != (len(dateArr)-1):
             cursor.execute('INSERT INTO "{}" SELECT * FROM "{}"'.format(i, (i+1)))
         else:
-            cursor.execute('INSERT INTO "{}" SELECT * FROM assignments')
+            cursor.execute('INSERT INTO "{}" SELECT * FROM assignments'.format(i))
     conn.commit()
 
     #Build string to commit to variable
