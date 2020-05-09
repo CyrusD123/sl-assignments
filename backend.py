@@ -41,7 +41,7 @@ def updateSheet():
     data = json.dumps(data, indent=2)
 
     # Don't need to change the file if it already exists
-    if os.path.exists("assignmentssheet-821db85dfa53.json") == True:
+    if os.path.exists("assignmentssheet-821db85dfa53.json") == False:
         # Opening file automatically deletes contents and will create it if it doesn't exits
         outJSON = open("assignmentssheet-821db85dfa53.json", "w")
         outJSON.write(data)
