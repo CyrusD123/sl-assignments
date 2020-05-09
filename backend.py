@@ -29,7 +29,7 @@ def updateSheet():
         "type": "service_account",
         "project_id": "assignmentssheet",
         "private_key_id": "821db85dfa53172a71eedcb3ab591699f2f3e693",
-        "private_key": os.environ['DRIVE_PRIVATE_KEY'],
+        "private_key": str(os.environ['DRIVE_PRIVATE_KEY']),
         "client_email": "sheeteditor@assignmentssheet.iam.gserviceaccount.com",
         "client_id": "107375601430696559484",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
