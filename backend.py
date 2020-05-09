@@ -13,6 +13,7 @@ import os
 import psycopg2
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import asyncio
 
 # Connect to database using heroku environment variable DATABASE_URL
 DATABASE_URL = os.environ['DATABASE_URL']
@@ -23,7 +24,7 @@ cursor = conn.cursor()
 
 # Define function for updating google sheets
 # It works by deleting everything and replacing it with SELECT * FROM assignments every time the database is edited
-def updateSheet():
+async def updateSheet():
     # Output data (currently a dict) to file so that you can use a python environment variable
     data = {
         "type": "service_account",
@@ -94,7 +95,10 @@ def index():
         # Commit changes to the database
         conn.commit()
         
-        updateSheet()
+        # Run function asynchroniously, still need to update for other functions
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(updateSheet())
+        loop.close()
 
         # Return true (there was no error)
         return json.dumps(True)
