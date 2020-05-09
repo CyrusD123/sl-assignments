@@ -48,10 +48,9 @@ sheet.resize(rows=sheet.row_count)
 cursor.execute('SELECT * FROM assignments ORDER BY "ID" ASC')
 table = cursor.fetchall()
 
-for i in range(54):
-    for i in range(len(table)):
-        #List comprehension to replace booleans with strings
-        table[i] = [ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in table[i] ]
+for i in range(len(table) * 54):
+    #List comprehension to replace booleans with strings
+    table[i] = [ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in table[i] ]
 
-        # Insert row into sheet
-        sheet.insert_row(table[i], (i+2))
+    # Insert row into sheet
+    sheet.insert_row(table[i], (i+2))
