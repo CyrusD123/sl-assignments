@@ -29,7 +29,7 @@ def updateSheet():
         "type": "service_account",
         "project_id": "assignmentssheet",
         "private_key_id": "821db85dfa53172a71eedcb3ab591699f2f3e693",
-        "private_key": str(os.environ['DRIVE_PRIVATE_KEY']),
+        "private_key": os.environ['DRIVE_PRIVATE_KEY'].replace('\\n', '\n'),
         "client_email": "sheeteditor@assignmentssheet.iam.gserviceaccount.com",
         "client_id": "107375601430696559484",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -62,6 +62,10 @@ def updateSheet():
     table = cursor.fetchall()
 
     for i in range(len(table)):
+        #List comprehension to replace booleans with strings
+        table[i] = [ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in table[i] ]
+
+        # Insert row into sheet
         sheet.insert_row(table[i], (i+2))
 
 # Initialize flask app
