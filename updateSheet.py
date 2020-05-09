@@ -54,4 +54,4 @@ for x in range(54):
         table[i] = [ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in table[i] ]
 
         # Insert row into sheet
-        sheet.insert_row(table[i], (i+2))
+        sheet.replace_row(table[i], (i+2))
