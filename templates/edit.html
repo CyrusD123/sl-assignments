@@ -9,7 +9,7 @@
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
-<body>
+<body style="display: block;">
 <!--Special formatting for page header-->
 <div class="header">
   <h1>Edit</h1>
@@ -105,7 +105,8 @@
             // Split it into an array by line
             var idLines = idValue.split("\n");
 
-            document.querySelector("#loader").style.display = "block"; 
+            document.querySelector("#loader").style.display = "block";
+            document.querySelector("body").style.display = "none";
 
             // Send ajax call
             $.ajax({
