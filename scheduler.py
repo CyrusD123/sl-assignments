@@ -6,6 +6,10 @@ if (datetime.datetime.today().weekday() == 0):
     import os
     import json
     import psycopg2
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
+    import csv
+    from backend import updateSheet
 
     # Connect to db
     DATABASE_URL = os.environ['DATABASE_URL']
@@ -60,3 +64,5 @@ if (datetime.datetime.today().weekday() == 0):
     #Close cursor and connection
     cursor.close()
     conn.close()
+
+    updateSheet()
