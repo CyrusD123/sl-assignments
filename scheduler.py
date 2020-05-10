@@ -61,8 +61,8 @@ if (datetime.datetime.today().weekday() == 0):
     # Commit changes
     conn.commit()
     
+    updateSheet()
+    
     #Close cursor and connection
     cursor.close()
     conn.close()
-
-    updateSheet()
