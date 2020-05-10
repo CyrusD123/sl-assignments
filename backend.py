@@ -1,4 +1,4 @@
-"""TODO add Google Sheets compatability
+"""TODO add Google Sheets compatability (add link on results, add loading wheel, add column headers)
 TODO Verify scheduler works
 TODO make history page:
 - scheduler.py creates copy of table, saving date range to config variable
@@ -63,13 +63,13 @@ def updateSheet():
 
     #List comprehension to replace booleans with strings
     table = [[ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in row ] for row in table ]
-    print(table)
 
     assignment_csv = open("sheet1.csv", "w+")
     csvWriter = csv.writer(assignment_csv, delimiter=',')
     csvWriter.writerows(table)
-    print(assignment_csv.read())
     client.import_csv(spreadsheet.id, assignment_csv)
+    
+    assignment_csv.close()
 
 # Initialize flask app
 app = Flask(__name__)
