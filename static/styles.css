@@ -60,6 +60,12 @@
         transform: rotate(360deg); 
     } 
 } 
+#transparentRect {
+    background: #fcfcfc;
+    width: 100px;
+    height: 100px;
+    opacity: 0.5;
+}
 .center { 
     position: absolute; 
     top: 0; 

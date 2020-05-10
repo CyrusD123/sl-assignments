@@ -25,7 +25,7 @@
 </div>
 
 <!--Loading wheel (hidden by default)-->
-<div id="transparent-rect" class="center" style="background: #fcfcfc; width: 100px; height: 100px; opacity: 0.5; display: none"></div>
+<div id="transparentRect" class="center" style="display: none"></div>
 <div id="loader" class="center" style="display: none"></div>
 
 <!--Form for editing database after a mistake-->
@@ -106,7 +106,7 @@
             // Split it into an array by line
             var idLines = idValue.split("\n");
             
-            document.querySelector("#transparent-rect").style.display = "block";
+            document.querySelector("#transparentRect").style.display = "block";
             document.querySelector("#loader").style.display = "block";
 
             // Send ajax call
