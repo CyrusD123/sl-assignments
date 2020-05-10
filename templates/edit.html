@@ -9,7 +9,7 @@
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
-<body style="visibility: visible;">
+<body>
 <!--Special formatting for page header-->
 <div class="header">
   <h1>Edit</h1>
@@ -106,7 +106,6 @@
             var idLines = idValue.split("\n");
 
             // Start loading spin
-            document.querySelector("body").style.visibility = "hidden"
             document.querySelector("#loader").style.visiblity = "visible";
 
             // Send ajax call
@@ -119,13 +118,11 @@
               url: '/edit',
               // On success, route to submitted page
               success: function (data) {
-                document.querySelector("body").style.visibility = "visible"
                 document.querySelector("#loader").style.visibility = "hidden";
                 window.location = "/submitted";
               },
               // On error, display a popup and let them try again
               error: function (data) {
-                document.querySelector("body").style.visibility = "visible"
                 document.querySelector("#loader").style.visibility = "hidden";
                 alert("Error! Please make sure that all ID numbers are correct and that all parts of the form are filled in.");
               }
