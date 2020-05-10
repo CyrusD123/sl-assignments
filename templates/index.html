@@ -25,6 +25,7 @@
 </div>
 
 <!--Loading wheel (hidden by default)-->
+<div id="loader" class="center" style="visibility: hidden"></div>
 
 <!--Form for changing database-->
 <form id="askForm">
@@ -103,6 +104,8 @@
             var idValue = document.getElementById("idText").value;
             // Split it into an array by line
             var idLines = idValue.split("\n")
+            
+            document.querySelector("#loader").style.visibility = "visible"; 
 
             // Send ajax call
             $.ajax({

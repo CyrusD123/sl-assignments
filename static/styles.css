@@ -46,6 +46,28 @@
     background: #003594;
     border-color: #003594;
 }
+/*Loading Spinning Wheel*/
+#loader { 
+    border: 12px solid #f3f3f3; 
+    border-radius: 50%; 
+    border-top: 12px solid #003594; 
+    width: 70px; 
+    height: 70px; 
+    animation: spin 1s linear infinite; 
+} 
+@keyframes spin { 
+    100% { 
+        transform: rotate(360deg); 
+    } 
+} 
+.center { 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    margin: auto; 
+}
 /*General body formatting*/
 body {
     font-family: 'Open Sans', sans-serif;
