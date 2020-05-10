@@ -58,10 +58,13 @@ def updateSheet():
 
     #List comprehension to replace booleans with strings
     table = [[ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in row ] for row in table ]
+    fieldnames = ["Student ID", "Last Name", "First Name", "Science", "Math", "English", "Social Studies", "World Language", "PE/Health/DE", "Special Education", "Music", "Art", "Family Consumer Science", "Technology Education", "Business", "Guidance Notes", "LCTI", "Supports", "Email"]
 
     assignment_csv = open('sheet1.csv', 'w')
     csvWriter = csv.writer(assignment_csv, delimiter=',')
-    csvWriter.writerow(["Student ID", "Last Name", "First Name", "Science", "Math", "English", "Social Studies", "World Language", "PE/Health/DE", "Special Education", "Music", "Art", "Family Consumer Science", "Technology Education", "Business", "Guidance Notes", "LCTI", "Supports", "Email"])
+    csvWriterDict = csv.DictWriter(assignment_csv, fieldnames=fieldnames)
+
+    csvWriterDict.writeheader()
     csvWriter.writerows(table)
     # Close file so that it can update
     assignment_csv.close()
