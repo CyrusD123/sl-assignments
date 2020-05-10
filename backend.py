@@ -52,11 +52,6 @@ def updateSheet():
     client = gspread.authorize(creds)
     # Open sheet
     spreadsheet = client.open('SLSD Assignment Completion Database - Google Sheets')
-    worksheet = spreadsheet.get_worksheet(0)
-
-    # Delete all from sheet except headers
-    worksheet.resize(rows=1)
-    worksheet.resize(rows=worksheet.row_count)
 
     cursor.execute('SELECT * FROM assignments ORDER BY "ID" ASC')
     table = cursor.fetchall()
@@ -66,6 +61,7 @@ def updateSheet():
 
     assignment_csv = open('sheet1.csv', 'w')
     csvWriter = csv.writer(assignment_csv, delimiter=',')
+    csvWriter.writerow(["Student ID", "Last Name", "First Name", "Science", "Math", "English", "Social Studies", "World Language", "PE/Health/DE", "Special Education", "Music", "Art", "Family Consumer Science", "Technology Education", "Business", "Guidance Notes", "LCTI", "Supports", "Email"])
     csvWriter.writerows(table)
     # Close file so that it can update
     assignment_csv.close()
