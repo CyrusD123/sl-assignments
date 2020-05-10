@@ -51,8 +51,8 @@
     border: 12px solid #f3f3f3; 
     border-radius: 50%; 
     border-top: 12px solid #003594; 
-    width: 50px; 
-    height: 50px; 
+    width: 70px; 
+    height: 70px; 
     animation: spin 1s linear infinite; 
 } 
 @keyframes spin { 
