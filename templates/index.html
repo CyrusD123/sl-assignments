@@ -25,7 +25,7 @@
 </div>
 
 <!--Loading wheel (hidden by default)-->
-<div id="loader" class="center"></div>
+<div id="loader" class="center" style="visibility: hidden;"></div>
 
 <!--Form for changing database-->
 <form id="askForm">
@@ -106,6 +106,7 @@
             var idLines = idValue.split("\n");
             
             // Start loading spin
+            document.querySelector("body").style.visibility = "hidden";
             document.querySelector("#loader").style.visibility = "visible";
 
             // Send ajax call
