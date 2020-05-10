@@ -61,10 +61,12 @@
     } 
 } 
 #transparentRect {
-    background: #fcfcfc;
-    width: 100px;
-    height: 100px;
+    background: #d0d0d0;
+    width: 150px;
+    height: 150px;
     opacity: 0.5;
+    color: #3F434A;
+    margin-bottom: 15px;
 }
 .center { 
     position: absolute; 
