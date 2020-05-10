@@ -9,7 +9,7 @@
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
-<body style="display: block;">
+<body>
 <!--Special formatting for page header-->
 <div class="header">
   <h1>Edit</h1>
@@ -25,6 +25,7 @@
 </div>
 
 <!--Loading wheel (hidden by default)-->
+<div id="transparent-rect" class="center" style="background: #fcfcfc; width: 100px; height: 100px; display: none"></div>
 <div id="loader" class="center" style="display: none"></div>
 
 <!--Form for editing database after a mistake-->
@@ -105,7 +106,7 @@
             // Split it into an array by line
             var idLines = idValue.split("\n");
             
-            document.querySelector("body").style.display = "none";
+            document.querySelector("#transparent-rect").style.display = "block";
             document.querySelector("#loader").style.display = "block";
 
             // Send ajax call
