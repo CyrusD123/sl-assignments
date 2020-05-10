@@ -51,11 +51,12 @@ def updateSheet():
     creds = ServiceAccountCredentials.from_json_keyfile_name('assignmentssheet-821db85dfa53.json', scope)
     client = gspread.authorize(creds)
     # Open sheet
-    sheet = client.open('SLSD Assignment Completion Database - Google Sheets').sheet1
+    spreadsheet = client.open('SLSD Assignment Completion Database - Google Sheets')
+    worksheet = spreadsheet.get_worksheet(0)
 
     # Delete all from sheet except headers
-    sheet.resize(rows=1)
-    sheet.resize(rows=sheet.row_count)
+    worksheet.resize(rows=1)
+    worksheet.resize(rows=worksheet.row_count)
 
     cursor.execute('SELECT * FROM assignments ORDER BY "ID" ASC')
     table = cursor.fetchall()
@@ -66,7 +67,7 @@ def updateSheet():
     with open("sheet1.csv", "w+") as assignment_csv:
         csvWriter = csv.writer(assignment_csv, delimiter=',')
         csvWriter.writerows(table)
-        client.import_csv(sheet, assignment_csv)
+        client.import_csv(spreadsheet.id, assignment_csv)
 
 # Initialize flask app
 app = Flask(__name__)
