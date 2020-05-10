@@ -25,7 +25,6 @@
 </div>
 
 <!--Loading wheel (hidden by default)-->
-<div id="loader" class="center"></div>
 
 <!--Form for changing database-->
 <form id="askForm">
@@ -103,7 +102,7 @@
             // Get all text from the textarea
             var idValue = document.getElementById("idText").value;
             // Split it into an array by line
-            var idLines = idValue.split("\n");
+            var idLines = idValue.split("\n")
 
             // Send ajax call
             $.ajax({
