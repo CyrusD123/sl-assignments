@@ -24,6 +24,9 @@
   <a href="/about">About</a>
 </div>
 
+<!--Loading wheel (hidden by default)-->
+<div id="loader" class="center"></div>
+
 <!--Form for changing database-->
 <form id="askForm">
   <p>Use this form to mark students as incomplete if<br>they haven't done their work for the week.</p>
@@ -101,6 +104,10 @@
             var idValue = document.getElementById("idText").value;
             // Split it into an array by line
             var idLines = idValue.split("\n");
+            
+            // Start loading spin
+            document.querySelector( "body").style.visibility = "hidden"; 
+            document.querySelector( "#loader").style.visibility = "visible";
 
             // Send ajax call
             $.ajax({
