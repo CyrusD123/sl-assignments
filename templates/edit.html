@@ -25,7 +25,7 @@
 </div>
 
 <!--Loading wheel (hidden by default)-->
-<div id="loader" class="center" style="opacity: 0;"></div>
+<div id="loader" class="center" style="visibility: hidden;"></div>
 
 <!--Form for editing database after a mistake-->
 <form id="editForm">
@@ -107,7 +107,7 @@
 
             // Start loading spin
             document.querySelector("body").style.visibility = "hidden"
-            document.querySelector("#loader").style.opacity = "1";
+            document.querySelector("#loader").style.visiblity = "visible";
 
             // Send ajax call
             $.ajax({
@@ -119,12 +119,12 @@
               url: '/edit',
               // On success, route to submitted page
               success: function (data) {
-                document.querySelector("#loader").style.opacity = "0";
+                document.querySelector("#loader").style.visibility = "hidden";
                 window.location = "/submitted";
               },
               // On error, display a popup and let them try again
               error: function (data) {
-                document.querySelector("#loader").style.opacity = "0";
+                document.querySelector("#loader").style.visibility = "hidden";
                 alert("Error! Please make sure that all ID numbers are correct and that all parts of the form are filled in.");
               }
             });
