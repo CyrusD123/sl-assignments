@@ -64,10 +64,11 @@ def updateSheet():
     #List comprehension to replace booleans with strings
     table = [[ "Completed" if cell==True else "Incomplete" if cell==False else cell for cell in row ] for row in table ]
 
-    with open("sheet1.csv", "w+") as assignment_csv:
-        csvWriter = csv.writer(assignment_csv, delimiter=',')
-        csvWriter.writerows(table)
-        client.import_csv(spreadsheet.id, assignment_csv)
+    assignment_csv = open("sheet1.csv", "w+")
+    csvWriter = csv.writer(assignment_csv, delimiter=',')
+    csvWriter.writerows(table)
+    print(assignment_csv.read())
+    client.import_csv(spreadsheet.id, assignment_csv)
 
 # Initialize flask app
 app = Flask(__name__)
