@@ -46,7 +46,7 @@
     background: #003594;
     border-color: #003594;
 }
-/*Loading Spinning Wheel
+/*Loading Spinning Wheel*/
 #loader { 
     border: 12px solid #f3f3f3; 
     border-radius: 50%; 
@@ -68,7 +68,6 @@
     right: 0; 
     margin: auto; 
 } 
-*/
 /*General body formatting*/
 body {
     font-family: 'Open Sans', sans-serif;
