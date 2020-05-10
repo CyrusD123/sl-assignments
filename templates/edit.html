@@ -119,11 +119,13 @@
               url: '/edit',
               // On success, route to submitted page
               success: function (data) {
+                document.querySelector("body").style.visibility = "visible"
                 document.querySelector("#loader").style.visibility = "hidden";
                 window.location = "/submitted";
               },
               // On error, display a popup and let them try again
               error: function (data) {
+                document.querySelector("body").style.visibility = "visible"
                 document.querySelector("#loader").style.visibility = "hidden";
                 alert("Error! Please make sure that all ID numbers are correct and that all parts of the form are filled in.");
               }
