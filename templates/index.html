@@ -105,8 +105,8 @@
             // Split it into an array by line
             var idLines = idValue.split("\n")
             
-            document.querySelector("#loader").style.display = "block";
             document.querySelector("body").style.display = "none";
+            document.querySelector("#loader").style.display = "block";
 
             // Send ajax call
             $.ajax({
