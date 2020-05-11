@@ -6,10 +6,6 @@ if (datetime.datetime.today().weekday() == 0):
     import os
     import json
     import psycopg2
-    import gspread
-    from oauth2client.service_account import ServiceAccountCredentials
-    import csv
-    from backend import updateSheet
 
     # Connect to db
     DATABASE_URL = os.environ['DATABASE_URL']
@@ -66,6 +62,11 @@ if (datetime.datetime.today().weekday() == 0):
     # Commit changes
     conn.commit()
     
+    # For some reason, oauth2 interferes with the patch requests, so we have to import it here
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
+    import csv
+    from backend import updateSheet
     updateSheet()
     
     #Close cursor and connection
