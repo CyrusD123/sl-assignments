@@ -12,6 +12,7 @@ import json
 import os
 import psycopg2
 import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 import csv
 
 # Connect to database using heroku environment variable DATABASE_URL
@@ -22,7 +23,6 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')# Heroku requires SSL
 cursor = conn.cursor()
 
 def updateSheet():
-    from oauth2client.service_account import ServiceAccountCredentials
     # Output data (currently a dict) to file so that you can use a python environment variable
     data = {
         "type": "service_account",
