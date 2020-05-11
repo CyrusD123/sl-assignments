@@ -64,7 +64,6 @@ if (datetime.datetime.today().weekday() == 0):
     
     # For some reason, oauth2 interferes with the patch requests, so we have to import it here
     import gspread
-    from oauth2client.service_account import ServiceAccountCredentials
     import csv
     from backend import updateSheet
     updateSheet()
