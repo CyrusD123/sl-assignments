@@ -49,6 +49,8 @@ if (datetime.datetime.today().weekday() == 0):
         newVar = newVar + date + ','
     newVar = newVar[:-1]
 
+    print(newVar)
+
     # Change variable with Heroku API
     requests.patch("https://api.heroku.com/apps/sl-assignments/config-vars", data='{{"HISTORY_DATES":"{}"}}'.format(newVar), headers={"Content-Type": "application/json", "Accept": "application/vnd.heroku+json; version=3"})
     
