@@ -52,7 +52,10 @@ if (datetime.datetime.today().weekday() == 0):
     print(newVar)
 
     # Change variable with Heroku API
-    requests.patch("https://api.heroku.com/apps/sl-assignments/config-vars", data='{{"HISTORY_DATES":"{}"}}'.format(newVar), headers={"Content-Type": "application/json", "Accept": "application/vnd.heroku+json; version=3"})
+    # The patch requests is not being accepted
+    r = requests.patch("https://api.heroku.com/apps/sl-assignments/config-vars", data='{{"HISTORY_DATES":"{}"}}'.format(newVar), headers={"Content-Type": "application/json", "Accept": "application/vnd.heroku+json; version=3"})
+    print(r)
+    print(r.content)
     
 
     subject_arr = ["Science", "Math", "English", "Social Studies", "World Language", "PE/Health/DE", "Special Education", "Music", "Art", "Family Consumer Science", "Technology Education", "Business", "Guidance Notes", "LCTI", "Supports"]
